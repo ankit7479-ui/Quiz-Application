@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Quiz Master</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  </head>
+<body class="bg-gradient-to-br from-blue-900 via-purple-900 to-pink-800 min-h-screen text-white">
+    <div id="app" class="container mx-auto px-4 py-6 max-w-md">
+        
+        <!-- Start Screen -->
+        <div id="startScreen" class="text-center fade-in">
+            <div class="mb-8">
+                <i class="fas fa-brain text-6xl text-yellow-400 mb-4 bounce"></i>
+                <h1 class="text-4xl font-bold mb-2">Quiz Master</h1>
+                <p class="text-lg text-gray-300">Test your knowledge!</p>
+            </div>
+            
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-4">Choose Category:</h2>
+                <div class="space-y-3">
+                    <button onclick="startQuiz('general')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg quiz-option">
+                        <i class="fas fa-globe mr-2"></i>General Knowledge
+                    </button>
+                    <button onclick="startQuiz('science')" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg quiz-option">
+                        <i class="fas fa-flask mr-2"></i>Science
+                    </button>
+                    <button onclick="startQuiz('history')" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-4 px-6 rounded-lg quiz-option">
+                        <i class="fas fa-landmark mr-2"></i>History
+                    </button>
+                    <button onclick="startQuiz('geography')" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg quiz-option">
+                        <i class="fas fa-map mr-2"></i>Geography
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="hidden">
+            <!-- Header -->
+            <div class="bg-white bg-opacity-20 rounded-lg p-4 mb-6">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="text-sm font-medium">
+                        Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-clock mr-1"></i>
+                        <span id="timer" class="font-bold">30</span>s
+                    </div>
+                </div>
+                <div class="w-full bg-gray-300 rounded-full h-2">
+                    <div id="progressBar" class="bg-yellow-400 h-2 rounded-full progress-bar" style="width: 10%"></div>
+                </div>
+            </div>
+
+            <!-- Question -->
+            <div class="bg-white bg-opacity-20 rounded-lg p-6 mb-6">
+                <h2 id="questionText" class="text-lg font-semibold mb-4">Question will appear here</h2>
+            </div>
+
+            <!-- Options -->
+            <div id="optionsContainer" class="space-y-3 mb-6">
+                <!-- Options will be generated here -->
+            </div>
+
+            <!-- Score -->
+            <div class="text-center">
+                <div class="bg-white bg-opacity-20 rounded-lg p-4 inline-block">
+                    <i class="fas fa-star text-yellow-400 mr-2"></i>
+                    Score: <span id="currentScore">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="hidden text-center">
+            <div class="mb-8">
+                <i id="resultIcon" class="fas fa-trophy text-6xl text-yellow-400 mb-4 bounce"></i>
+                <h1 class="text-3xl font-bold mb-2">Quiz Complete!</h1>
+                <p id="resultMessage" class="text-lg text-gray-300">Great job!</p>
+            </div>
+
+            <div class="bg-white bg-opacity-20 rounded-lg p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-4">Your Results</h2>
+                <div class="space-y-2">
+                    <div class="flex justify-between">
+                        <span>Final Score:</span>
+                        <span id="finalScore" class="font-bold">0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Correct Answers:</span>
+                        <span id="correctAnswers" class="font-bold">0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Total Questions:</span>
+                        <span id="totalAnswered" class="font-bold">0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Accuracy:</span>
+                        <span id="accuracy" class="font-bold">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="restartQuiz()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg quiz-option">
+                    <i class="fas fa-redo mr-2"></i>Play Again
+                </button>
+                <button onclick="goHome()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg quiz-option">
+                    <i class="fas fa-home mr-2"></i>Change Category
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
