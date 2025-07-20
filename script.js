@@ -1,4 +1,4 @@
-  // Quiz data
+// Quiz data
         const quizData = {
             general: [
                 {
